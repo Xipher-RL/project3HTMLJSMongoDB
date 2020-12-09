@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+var time = [];
+var temp = [];
+var humid = [];
+$.getJSON("Json.json", function(data) {  
+	$.each(data, function(key, value){
+      //time.push({x: value[0]})
+		temp.push({y: value[1]});
+		humid.push({y: (value[2])});
+});
+    
+	var chart = new CanvasJS.Chart("chartContainer",{
+		title:{
+			text:"Plotting Temperature and Humidity"
+		},
+		axisX:{
+			//valueFormatString: ##:##,
+            //interval: 1,
+            //intervalType: "hour"
+            
+			},
+		axisY:{
+			minimum: -20,
+			maximum: 120
+			
+			},
+		data: [{
+			name: "Temperature",
+				showInLegend: true,
+			legendText: "Temperature",
+			color: "red",
+			type: "spline",
+			dataPoints : temp
+			},
+			{
+			name: "Humidity",
+				showInLegend: true,
+			legendText: "Humidity",
+			color: "blue",
+			type: "spline",
+			dataPoints : humid
+			}]
+			});
+		
+	chart.render();
+});
+}
+</script>
+
+</head>
+<body>
+<div id="chartContainer" style="height: 600px; width: 100%;"></div>
+</body>
+</html>

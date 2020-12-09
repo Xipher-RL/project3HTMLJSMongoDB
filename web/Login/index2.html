@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login / Sign Up Form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/main.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    
+</head>
+<body>
+    <div>
+        <img src="weather_station_logo.png" ALT="Welcome to CS499 Weather Station Data System">
+    </div>
+    <div class="container">
+ 
+        <form class="form" id="createAccount">
+            <h1 class="form_title">Create Account</h1>
+            <div class="form_message form_message--error"></div>
+            <div class="form_input-group">
+                <input type="text" id="signupUsername" class="form_input" autofocus placeholder="Username">
+                <div class="form_input-error-message"></div>
+            </div>
+            <div class="form_input-group">
+                <input type="email" id="signupEmail" class="form_input" placeholder="Email Address">
+                <div class="form_input-error-message"></div>
+            </div>
+            <div class="form_input-group">
+                <input type="password" id="signupPassword1" class="form_input" placeholder="Password">
+                <div class="form_input-error-message"></div>
+            </div>
+            <div class="form_input-error-message" id="signupMismatchPass"></div>
+            <div class="form_input-group">
+                <input type="password" id="signupPassword2" class="form_input" placeholder="Confirm password">
+                <div class="form_input-error-message"></div>
+            </div>
+            <button onclick="signupBtnHandler()" class="form_button" type="submit">Continue</button>
+            <p class="form_text">
+                <a class="form_link" href="./index.html" id="linkLogin">Already have an account? Sign in</a>
+            </p>
+        </form>
+    </div>
+    <script type="text/javascript">
+            function signupBtnHandler(e) {
+            e.preventDefault;
+            var username = document.querySelector("#signupUsername").value;
+            var email = document.querySelector("#signupEmail").value;
+            var password = document.querySelector("#signupPassword1").value;
+            var password2 = document.querySelector("#signupPassword2").value;
+            
+            if (password1 !== password2) {
+                document.querySelector("#signupMismatchPass").innerHTML = "Passwords must Match, Try again";
+                setTimeout(() => {
+                    document.querySelector("#signupMismatchPass").innerHTML = ""; }, 4000);
+                }
+                else{
+                    eel.registerButtonHandler_py(username, password, email); }
+            }
+
+    </script>
+</body>
+</html>

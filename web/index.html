@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,500;0,700;1,300&display=swap" rel="stylesheet">
+    
+    <title>CS-499 Project Available Data</title>
+    <link rel="stylesheet" href="./src/main.css">
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+
+<body>
+    <div><img src="./weather_station_logo.png" alt="Welcome to CS499 Weather Station Data System"></div>
+    <div class="container">
+        <form class="form"  id="dateList">
+            <h1 class="form_title">Available Dates:</h1>
+            <a class="form_link form--hidden" href="./RL-CS350-FPCanvasJS.html" id="btnView">
+            Your Data is Ready</a>
+            <button class="form_button" id="btnDate"
+             type="submit">Pull the Dates</button>
+            <div class="form_text form--hidden" id="listDiv">
+                <ul id="listDates"></ul>
+                    
+            </div>
+        </form>
+    </div>
+    <script class="text/javascript">
+        document.addEventListener("DOMContentLoaded",() => {
+            var datebtn = document.querySelector("#btnDate");
+            var listdiv = document.querySelector("#listDiv")
+          
+
+
+
+            document.querySelector("#btnDate").addEventListener("click", e =>{
+                e.preventDefault();
+                datebtn.classList.add("form--hidden");
+                listdiv.classList.remove("form--hidden");
+                eel.collectionFetcher_py();
+            })
+        });
+        
+
+        function availableDatesListAppend_js(date) {
+            var listNode = document.getElementById("dateList"),
+                liNode = document.createElement("li"),
+                anchorNode = document.createElement("a");
+
+            anchorNode.textContent = date;
+            anchorNode.setAttribute('href', "javascript:void(0)");
+            anchorNode.setAttribute('onclick', "eel.fetchCollectionData_py("+date.toString()+")");
+            liNode.appendChild(anchorNode);
+            listNode.appendChild(liNode);
+
+        }
+        eel.expose(availableDatesListAppend_js);
+
+        function dataReadyToViewCanvasJS_js() {
+            var listdiv = document.querySelector("#listDiv")
+            var viewbtn = document.querySelector("#btnView")
+
+            listdiv.classList.add("form--hidden");
+            viewbtn.classList.remove("form--hidden");
+        }
+        eel.expose(dataReadyToViewCanvasJS_js);
+
+        function onClickBtnView() {
+            window.location.href = './RL-CS350-FPCanvasJS.html'
+
+        }     
+
+    </script>
+</body>
+</html>

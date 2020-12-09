@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Login / Sign Up Form</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,500;0,700;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/main.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    
+</head>
+<body>
+    <div>
+        <img src="weather_station_logo.png" ALT="Welcome to CS499 Weather Station Data System">
+    </div>
+    <div class="container">
+        <form class="form" id="login">
+            <h1 class="form_title">Login</h1>
+            <div class="form_message form_message--error"></div>
+            <div class="form_input-group">
+                <input type="text" class="form_input" id="loginUsername" autofocus placeholder="Username">
+                <div class="form_input-error-message"></div>
+            </div>
+            <div class="form_input-group">
+                <input type="password" class="form_input" id="loginPassword" placeholder="Password">
+                <div class="form_input-error-message"></div>
+            </div>
+            <button class="form_button" type="submit" id="btnLogin">Login</button>
+            <p class="form_text">
+                <a href="#" class="form_link">Forgot your password?</a>
+            </p>
+            <p class="form_text">
+                <a class="form_link" href="./index2.html" id="linkCreateAccount">Don't have an account? Create account</a>
+            </p>
+        </form>
+        
+    </div>
+    <script src= "/main.js"></script>
+</body>
+</html>
